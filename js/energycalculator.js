@@ -5,16 +5,22 @@ window.addEventListener('load', function () {
     data: {
       wattage: 0.0,
       price: 0.0,
-      usageHours: 0,
-      cost: 0.0,
-      dailyCost: 0.0
+      usageHours: 0
     },
-    methods: {
-      calculateCost: function () {
+    computed: {
+      dailyCost: function () {
         let wattageHour = this.wattage * this.usageHours
         let kiloWattageHour = wattageHour / 1000.00
 
-        this.dailyCost = kiloWattageHour * this.price
+        return kiloWattageHour * this.price / 100.00
+      },
+      monthlyCost: function () {
+        return this.dailyCost * 30
+      }
+    },
+    methods: {
+      convertToCurrency: function(number, format) {
+        return numeral(number).format(format)
       }
     }
   })
