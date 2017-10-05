@@ -13,8 +13,28 @@
 
   <body>
 
-    <div id="app">
-      {{ message }}
+    <div class="container">
+      <div id="app">
+        <div>Wattage</div>
+        <div>
+          <input v-model="wattage" type="number">
+          {{ wattage }} W
+        </div>
+        <div>
+          <input v-model="usageHours" type="number">
+          {{ usageHours }} h
+        </div>
+        <div>
+          <input v-model="price" type="number">
+          {{ price }} cents per kWh
+        </div>
+        <div>
+          <button v-on:click="calculateCost">Calculate</button>
+        </div>
+        <div>
+          <h3>Daily Cost: {{ dailyCost }}</h3>
+        </div>
+      </div>
     </div>
 
   </body>
