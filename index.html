@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-C0X5qw1DlkeV0RDunhmi4cUBUkPDTvUqzElcNWm1NI2T4k8tKMZ+wRPQOhZfSJ9N" crossorigin="anonymous">
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
@@ -16,23 +16,26 @@
 
     <div class="container">
       <div id="app">
-        <div>Wattage</div>
-        <div>
-          <input v-model.number="wattage" type="number">
-          {{ wattage }} W
+
+        <h1>Energy Calculator</h1>
+        <div class="form-group">
+          <label for="inputWattage" class="form-label">Wattage (W)</label>
+          <input v-model.number="wattage" id="inputWattage" type="number" class="form-control" placeholder="2400">
+        </div>
+        <div class="form-group">
+          <label for="inputUsageHours" class="form-label">Usage Hours (h)</label>
+          <input v-model.number="usageHours" id="inputUsageHours" type="number" class="form-control" placeholder="5">
+        </div>
+        <div class="form-group">
+          <label for="inputPrice" class="form-label">Price (cents)</label>
+          <input v-model.number="price" id="inputPrice" type="number" class="form-control" placeholder="28">
         </div>
         <div>
-          <input v-model.number="usageHours" type="number">
-          {{ usageHours }} h
+          <h3><strong>Daily Cost:</strong> {{ convertToCurrency( dailyCost, '$0,0.00' ) }}</h3>
+          <h3><strong>Monthly Cost (30 days):</strong> {{ convertToCurrency( monthlyCost, '$0,0.00' ) }}</h3>
+          <h3><strong>Seasonal Cost (90 days):</strong> {{ convertToCurrency( seasonalCost, '$0,0.00' ) }}</h3>
         </div>
-        <div>
-          <input v-model.number="price" type="number">
-          {{ price }} cents per kWh
-        </div>
-        <div>
-          <h3>Daily Cost: {{ convertToCurrency( dailyCost, '$0,0.00' ) }}</h3>
-          <h3>Monthly Cost: {{ convertToCurrency( monthlyCost, '$0,0.00' ) }}</h3>
-        </div>
+
       </div>
     </div>
 

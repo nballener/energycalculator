@@ -3,9 +3,9 @@ window.addEventListener('load', function () {
   var app = new Vue({
     el: '#app',
     data: {
-      wattage: 0.0,
-      price: 0.0,
-      usageHours: 0
+      wattage: "",
+      price: "",
+      usageHours: ""
     },
     computed: {
       dailyCost: function () {
@@ -16,6 +16,9 @@ window.addEventListener('load', function () {
       },
       monthlyCost: function () {
         return this.dailyCost * 30
+      },
+      seasonalCost: function () {
+        return this.dailyCost * 90
       }
     },
     methods: {
