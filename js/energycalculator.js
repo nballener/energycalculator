@@ -14,11 +14,20 @@ window.addEventListener('load', function () {
 
         return kiloWattageHour * this.price / 100.00
       },
+      weeklyCost: function () {
+        return this.dailyCost * 7
+      },
+      fortnightlyCost: function () {
+        return this.dailyCost * 14
+      },
       monthlyCost: function () {
         return this.dailyCost * 30
       },
       seasonalCost: function () {
         return this.dailyCost * 90
+      },
+      yearlyCost: function () {
+        return this.dailyCost * 365
       }
     },
     methods: {
